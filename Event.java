@@ -1,10 +1,9 @@
-
 public class Event{
 	
 	private String eventTitle;
     private String dateAndTime;
     private String location;
-    private Contact contact;
+    private String Type;
     
    
     public Event(){
@@ -12,16 +11,16 @@ public class Event{
     	 this.eventTitle = null;
          this.dateAndTime = null;
          this.location = null;
-         this.contact = null;
+         this.Type = null;
          
     }
     
-    public Event(String eventTitle, String dateAndTime, String location, Contact contact){
+    public Event(String eventTitle, String dateAndTime, String location, String Type){
     	
         this.eventTitle = eventTitle;
         this.dateAndTime = dateAndTime;
         this.location = location;
-        this.contact = contact;
+        this.Type = Type;
         
     }
     
@@ -45,12 +44,12 @@ public class Event{
         this.location = location;
         
     }
-
-    public void setContact(Contact contact){
-    	
-        this.contact = contact;
-        
+    
+    public void setType(String Type) {
+    	this.Type = Type;
     }
+
+  
     
     
     // getter's
@@ -72,12 +71,12 @@ public class Event{
         return location;
         
     }
-
-    public Contact getContact(){
-    	
-        return contact;
-        
+    
+    public String getType() {
+    	return Type;
     }
+
+
     
     
     
@@ -86,7 +85,8 @@ public class Event{
     	System.out.println("\nEvent title:"+eventTitle);
     	System.out.println("Date and time of event:"+dateAndTime);
     	System.out.println("Location of event:" +location);
-    	System.out.println("Contact:" + contact.getContactName());
+    	System.out.println("The Type:" +Type);
+    	
     	
     }
     
