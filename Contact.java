@@ -33,7 +33,7 @@ class Contact implements Comparable<String>{
 		
 	}
 
-	public Contact(String contactName, int phoneNumber, String emailAddress, String address, String birthday, String notes,EventLinkedList <Event> Event){
+	public Contact(String contactName, int phoneNumber, String emailAddress, String address, String birthday, String notes,EventLinkedList Event){
 		
 		this.contactName = contactName;
 		this.phoneNumber = phoneNumber;
