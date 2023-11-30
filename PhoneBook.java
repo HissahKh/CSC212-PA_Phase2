@@ -47,6 +47,34 @@ do{
 		
 	case 2:
 		//search for a Contact
+
+	        System.out.println("enter your search criteria");
+                int cr=input.nextInt();
+                String s;
+                switch(cr){
+                    case 1:
+                        System.out.print("enter contact's name: ");
+                        s=input.nextLine();
+                        ContactBST.Search(cr,s);
+                    case 2:
+                         System.out.print("enter contact's phone number: ");
+                        s=input.nextLine();
+                        ContactBST.Search(cr,s);
+                        
+                    case 3:
+                         System.out.print("enter contact's email address: ");
+                        s=input.nextLine();
+                        ContactBST.Search(cr,s);
+                        
+                    case 4:
+                         System.out.print("enter contact's address: ");
+                        s=input.nextLine();
+                        ContactBST.Search(cr,s);
+                        
+                    case 5:
+                         System.out.print("enter contact's birthday: ");
+                        s=input.nextLine();
+                        ContactBST.Search(cr,s);
 	
 		break;
 		
