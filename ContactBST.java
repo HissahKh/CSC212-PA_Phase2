@@ -2,14 +2,76 @@
 public class ContactBST<T>{
  private BSTNode<T> root, current;
     
-    public ContactBST(){
-        root=current=null;
-    }
-    
-    public boolean empty(){
-        return root==null;
+   public ContactBST() {
+	root = current = null;
+	}
+	public boolean empty() {
+	return root == null;
+	}
+	public boolean full() {
+	return false;
+	}
+	public T retrieve () {
+	return current.data;
+	}
+
+	public boolean findkey(String tkey) {
+		BSTNode<T> p = root,q = root; 
+		if(empty())
+		return false;
+		
+		int compareResult = tkey.compareTo(p.key);
+		while(p != null) {
+		q = p; 
+		
+		if(p.key.replaceAll("\\s+","").equalsIgnoreCase(tkey.replaceAll("\\s+",""))) {
+		current = p; 
+		return true;
+		} 
+		else
+		if(compareResult < 0)
+		p = p.left; 
+		else
+		p = p.right;
+		} current = q; return false;
+		}
+
+	
+//insert
+	public boolean insert(String k ,T val) {
+		BSTNode<T> p , q =  current;
+		p =  new BSTNode<T>(k, val);
+  
+
+        if (findkey(k)) {
+            current = (BSTNode<T>) q;  // findName() modified current
+            System.out.println("The Contact name is already in the PhoneBook");
+            return false; // Contact with the same name already exists
+        }
         
-    }
+        if(findPhoneNumber(((Contact)p.getData()).getPhoneNumber())) {
+        	System.out.println("The Contact number is already in the PhoneBook");
+        	return false;}
+        
+        
+        if (empty()) {
+            root = current = (BSTNode<T>) p;
+            return true;
+        } 
+        
+        else {
+            // current is pointing to parent of the new key
+            int compareResult = k.replaceAll("\\s+","").compareTo(current.key.replaceAll("\\s+",""));
+            if (compareResult < 0)
+                current.left = (BSTNode<T>) p;
+            else
+                current.right = (BSTNode<T>) p;
+            current = (BSTNode<T>) p;
+            return true;
+        }
+		}
+
+
     
     //search
     public void Search(int c,String str){
@@ -174,6 +236,48 @@ public class ContactBST<T>{
         if(n==0)
             System.out.print("contact not found");
     }
+	
+//method to search if number exist
+	public boolean findPhoneNumber(int phoneNumber) {
+		return findPhoneNumber1(root, phoneNumber);}
+
+public boolean findPhoneNumber1(BSTNode<T> p, int phoneNumber) {
+	if (p == null) {
+        return false;
+    }
+
+    if (((Contact)p.getData()).getPhoneNumber()== phoneNumber) {
+        return true;  // Contact with the given phone number found
+    }
+
+    // Recursively search in the left and right subtrees
+    if (phoneNumber < ((Contact)p.getData()).getPhoneNumber()) {
+        return findPhoneNumber1(p.left, phoneNumber);
+    } else {
+        return findPhoneNumber1(p.right, phoneNumber);
+    }}
+
+	//print
+	public String print() {
+	    StringBuilder result = new StringBuilder();
+	    inOrderTraversal(root, result);
+	    return result.toString();
+	}
+
+	private void inOrderTraversal(BSTNode<T> node, StringBuilder result) {
+	    if (node != null) {
+	        // Traverse the left subtree
+	        inOrderTraversal(node.left, result);
+
+	        // Append the current node's information to the result string
+	        result.append(((Contact)node.getData()).getContactName()).append("\n");
+
+	        // Traverse the right subtree
+	        inOrderTraversal(node.right, result);
+	    }
+	}
+	 
+	  }
 }
 
 	
