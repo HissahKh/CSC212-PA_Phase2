@@ -278,6 +278,105 @@ public boolean findPhoneNumber1(BSTNode<T> p, int phoneNumber) {
 	}
 	 
 	  }
+
+
+	
+	
+	public void delete(String del) {
+	    if (empty()) {
+	        return;
+	    }
+
+
+	    BSTNode<T> parent = null;
+	    BSTNode<T> current = root;
+	    boolean isLeftChild = false;
+
+
+	    while (current != null) {
+	    	
+	        int compareResult = del.compareToIgnoreCase(current.key.replaceAll("\\s+", ""));
+
+	        if (compareResult == 0) {
+	            break; 
+	        }
+
+	        parent = current;
+	        if (compareResult < 0) {
+	            current = current.left;
+	            isLeftChild = true;
+	        } else {
+	            current = current.right;
+	            isLeftChild = false;
+	        }
+	    }
+
+	    if (current == null) {
+	        return; 
+	    }
+
+
+	    if (current.left == null && current.right == null) {
+	        if (current == root) {
+	            root = null; 
+	        } else if (isLeftChild) {
+	            parent.left = null;
+	        } else {
+	            parent.right = null;
+	        }
+	    }
+	  
+	    else if (current.right == null) {
+	        if (current == root) {
+	            root = current.left; 
+	        } else if (isLeftChild) {
+	            parent.left = current.left;
+	        } else {
+	            parent.right = current.left;
+	        }
+	    } else if (current.left == null) {
+	        if (current == root) {
+	            root = current.right; 
+	        } else if (isLeftChild) {
+	            parent.left = current.right;
+	        } else {
+	            parent.right = current.right;
+	        }
+	    }
+	   
+	    else {
+	        BSTNode<T> successor = getSuccessor(current);
+	        if (current == root) {
+	            root = successor; 
+	        } else if (isLeftChild) {
+	            parent.left = successor;
+	        } else {
+	            parent.right = successor;
+	        }
+	        successor.left = current.left;
+	    }
+	}
+
+
+	private BSTNode<T> getSuccessor(BSTNode<T> node) {
+	    BSTNode<T> parent = node;
+	    BSTNode<T> successor = node;
+	    BSTNode<T> current = node.right;
+
+	    while (current != null) {
+	        parent = successor;
+	        successor = current;
+	        current = current.left;
+	    }
+
+	    if (successor != node.right) {
+	        parent.left = successor.right;
+	        successor.right = node.right;
+	    }
+
+	    return successor;
+	}
+	 
 }
 
 	
