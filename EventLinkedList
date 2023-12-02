@@ -73,36 +73,7 @@ public class EventLinkedList<T>{
 		
 		
 		
-public boolean search (String s, int n) { //يبي له تعديل !!!!!!
-			
-			if(isEmpty()) {
-			System.out.print("There is no events");
-			return false;
-			}
-			
-			current = head;
-			
-			while(current != null){
-			if(n == 1) {
-				if(s.equals(((Contact) current.getData()).getContactName()))
-						{
-				System.out.println(((Event) current.getData()).getEventTitle() + " , " + ((Event) current.getData()).getDateAndTime() + " , "  + ((Event) current.getData()).getLocation() + " , " + "Contact: " + ((Event) current.getData()).getContact().getContactName() + " , " + ((Event) current.getData()).getContact().getPhoneNumber() + " , " + ((Event) current.getData()).getContact().getEmailAddress() + " , " + ((Event) current.getData()).getContact().getAddress() + " , " + ((Event) current.getData()).getContact().getBirthday());;
-				
-				}
-			}
-				
-			if(n == 2){
-			
-				if(s.equals(((Event) current.getData()).getEventTitle())){
-					System.out.println(((Event) current.getData()).getEventTitle() + " , " + ((Event) current.getData()).getDateAndTime() + " , "  + ((Event) current.getData()).getLocation() + " , " + "Contact: " + ((Event) current.getData()).getContact().getContactName() + " , " + ((Event) current.getData()).getContact().getPhoneNumber() + " , " + ((Event) current.getData()).getContact().getEmailAddress() + " , " + ((Event) current.getData()).getContact().getAddress() + " , " + ((Event) current.getData()).getContact().getBirthday());;					
-			}
-				
-			}
-			current = current.next;
-			}
-		return true;
-			
-		}
+
 //-------------------------------------------
 		
 		public void delete(T d) {
