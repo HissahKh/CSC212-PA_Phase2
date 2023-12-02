@@ -387,36 +387,43 @@ public class ContactBST<T> {
 
 
 	//print contact by first name
-	public void printByFirstName(String name){
+	public void printByFirstName(String Firstname) {
+	    	printByFirstName(root,Firstname);
+			
+	    }
+	public void printByFirstName(BSTNode<T>node,String name){
 	BSTNode<T> q=root;
 	int c=0;
 	if(empty()){
 	System.out.print("tree is empty!");
 	return;}
-	while(q!=null){
-	int ind = ((Contact) q.getData()).getContactName().indexOf(' ');
-	String fName = ((Contact)q.getData()).getContactName().substring(0,ind);
+	
+	int ind = ((Contact) node.getData()).getContactName().indexOf(' ');
+	String fName = ((Contact)node.getData()).getContactName().substring(0,ind);
 	if (fName.equalsIgnoreCase(name)){
 	System.out.println("\nContact found!");
 						
-	System.out.println("\nName;" + ((Contact) q.getData()).getContactName());
-	System.out.println("Phone Number;" + ((Contact) q.getData()).getPhoneNumber());
-	System.out.println("Email Address;" + ((Contact) q.getData()).getEmailAddress());
-	System.out.println("Address;" + ((Contact) q.getData()).getAddress());
-	System.out.println("Birthday;" + ((Contact) q.getData()).getBirthday());
-	System.out.println("Notes:" + ((Contact) q.getData()).getNote());
+	System.out.println("\nName;" + ((Contact) node.getData()).getContactName());
+	System.out.println("Phone Number;" + ((Contact) node.getData()).getPhoneNumber());
+	System.out.println("Email Address;" + ((Contact) node.getData()).getEmailAddress());
+	System.out.println("Address;" + ((Contact) node.getData()).getAddress());
+	System.out.println("Birthday;" + ((Contact) node.getData()).getBirthday());
+	System.out.println("Notes:" + ((Contact) node.getData()).getNote());
 	c++;
 	}
-	else
-	if(fName.compareToIgnoreCase(name)<0)
-	q=q.left;
-	else
-	q=q.right;
-
-	}
+	 if (node != null ) {
+		 if(fName.compareToIgnoreCase(name)<0)
+     	EventExist(node.left,name);
+		 else
+         EventExist(node.right,name);
+     }
 	if(c==0){
 	System.out.println("the contact is not found");}
 	}
+
+	
+	 
+	  }
 
 	
 	 
