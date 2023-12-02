@@ -4,6 +4,7 @@ public class Event{
     private String dateAndTime;
     private String location;
     private String Type;
+    private String ContactName;
     
    
     public Event(){
@@ -12,15 +13,17 @@ public class Event{
          this.dateAndTime = null;
          this.location = null;
          this.Type = null;
+         this.ContactName = null;
          
     }
     
-    public Event(String eventTitle, String dateAndTime, String location, String Type){
+    public Event(String eventTitle, String dateAndTime, String location, String Type,String ContactName){
     	
         this.eventTitle = eventTitle;
         this.dateAndTime = dateAndTime;
         this.location = location;
         this.Type = Type;
+        this.ContactName = ContactName;
         
     }
     
@@ -74,6 +77,10 @@ public class Event{
     
     public String getType() {
     	return Type;
+    }
+    
+    public String getContact() {
+    	return ContactName;
     }
 
 
