@@ -127,7 +127,7 @@ do{
 	//Print contacts by first name	
 	case 6 -> {
             System.out.println("enter contact's first name: ");
-            String name=input.nextLine();
+            String name=input.next();
             ContactBST.printByFirstName(name);
             break;
             
