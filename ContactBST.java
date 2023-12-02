@@ -391,13 +391,13 @@ public class ContactBST<T> {
 	    	printByFirstName(root,Firstname);
 			
 	    }
-	public void printByFirstName(BSTNode<T>node,String name){
+	public void printByFirstName(BSTNode<T> node,String name){
 	BSTNode<T> q=root;
 	int c=0;
 	if(empty()){
 	System.out.print("tree is empty!");
 	return;}
-	
+	if (node != null ) {
 	int ind = ((Contact) node.getData()).getContactName().indexOf(' ');
 	String fName = ((Contact)node.getData()).getContactName().substring(0,ind);
 	if (fName.equalsIgnoreCase(name)){
@@ -410,13 +410,12 @@ public class ContactBST<T> {
 	System.out.println("Birthday;" + ((Contact) node.getData()).getBirthday());
 	System.out.println("Notes:" + ((Contact) node.getData()).getNote());
 	c++;
-	}
-	 if (node != null ) {
+	}	 
 		 if(fName.compareToIgnoreCase(name)<0)
-     	EventExist(node.left,name);
+			 printByFirstName(node.left,name);
 		 else
-         EventExist(node.right,name);
-     }
+			 printByFirstName(node.right,name);
+	}
 	if(c==0){
 	System.out.println("the contact is not found");}
 	}
