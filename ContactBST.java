@@ -74,168 +74,112 @@ public class ContactBST<T>{
 
     
     //search
-    public void Search(int c,String str){
-        if (empty()){
-            System.out.println("tree is empty");    
-        }
-        BSTNode<Contact> p=root;
-        int n=0;
-        
-        
-        switch(c){
-            case 1:
-               
-                while (p!=null){
-                    if(str.compareToIgnoreCase((Contact)p.data.getContactName())=0){
-                        System.out.println("\nContact found!");
-					
-					System.out.println("\nName;" + ((Contact) p.getData()).getContactName());
-							
-					System.out.println("Phone Number;" + ((Contact) p.getData()).getPhoneNumber());
-							
-					System.out.println("Email Address;" + ((Contact) p.getData()).getEmailAddress());
-				   
-					System.out.println("Address;" + ((Contact) p.getData()).getAddress());
-											
-					System.out.println("Birthday;" + ((Contact)p.getData()).getBirthday());
-													
-					System.out.println("Notes:" + ((Contact) p.getData()).getNote());
-					n++;
-					 return; 
-                    }
+    public void Search(int c, String str) {
+    
+
+    BSTNode<T> p;
+    p = root;
+    
+
+    switch (c) {
+        case 1 -> {
+            while (p != null) {
+                if (str.compareToIgnoreCase(((Contact) p.getData()).getContactName()) == 0) {
+                    System.out.println("\nContact found!");
+                    System.out.println("Name: " + ((Contact) p.getData()).getContactName());
+                    System.out.println("Phone Number: " + ((Contact) p.getData()).getPhoneNumber());
+                    System.out.println("Email Address: " + ((Contact) p.getData()).getEmailAddress());
+                    System.out.println("Address: " + ((Contact) p.getData()).getAddress());
+                    System.out.println("Birthday: " + ((Contact) p.getData()).getBirthday());
+                    System.out.println("Notes: " + ((Contact) p.getData()).getNote());
                     
-                    else
-                        if(str.compareToIgnoreCase((Contact)p.data.getContactName())<0){
-                            p=p.left;
-                        }
-                        else
-                            p=p.right;
+                    return;
+                } else if (str.compareToIgnoreCase(((Contact) p.getData()).getContactName()) < 0) {
+                    p = p.left;
+                } else {
+                    p = p.right;
+                }
+            }}
+        case 2 -> {
+            while (p != null) {
+                String s=""+((Contact) p.getData()).getPhoneNumber();
+                if (str.compareToIgnoreCase(s) == 0) {
+                    System.out.println("\nContact found!");
+                    System.out.println("Name: " + ((Contact) p.getData()).getContactName());
+                    System.out.println("Phone Number: " + ((Contact) p.getData()).getPhoneNumber());
+                    System.out.println("Email Address: " + ((Contact) p.getData()).getEmailAddress());
+                    System.out.println("Address: " + ((Contact) p.getData()).getAddress());
+                    System.out.println("Birthday: " + ((Contact) p.getData()).getBirthday());
+                    System.out.println("Notes: " + ((Contact) p.getData()).getNote());
                     
-                  
-                        
+                    return;
+                } else if (str.compareToIgnoreCase(s) < 0) {
+                    p = p.left;
+                } else {
+                    p = p.right;
                 }
-                
-            case 2:
-                while(p!=null){
-                   if (str.compareToIgnoreCase((Contact)p.data.getPhoneNumber())=0) {
-                       System.out.println("\nContact found!");
-					
-					System.out.println("\nName;" + ((Contact) p.getData()).getContactName());
-							
-					System.out.println("Phone Number;" + ((Contact) p.getData()).getPhoneNumber());
-							
-					System.out.println("Email Address;" + ((Contact) p.getData()).getEmailAddress());
-				   
-					System.out.println("Address;" + ((Contact) p.getData()).getAddress());
-											
-					System.out.println("Birthday;" + ((Contact) p.getData()).getBirthday());
-													
-					System.out.println("Notes:" + ((Contact) p.getData()).getNote());
-					n++;
-					 return; 
-                                         
-                   }
-                   
-                   else
-                        if(str.compareToIgnoreCase((Contact)p.data.getPhoneNumber())<0){
-                            p=p.left;
-                        }
-                        else
-                            p=p.right;
+            }}
+        case 3 -> {
+            while (p != null) {
+                if (str.compareToIgnoreCase(((Contact) p.getData()).getEmailAddress()) == 0) {
+                    System.out.println("\nContact found!");
+                    System.out.println("Name: " + ((Contact) p.getData()).getContactName());
+                    System.out.println("Phone Number: " + ((Contact) p.getData()).getPhoneNumber());
+                    System.out.println("Email Address: " + ((Contact) p.getData()).getEmailAddress());
+                    System.out.println("Address: " + ((Contact) p.getData()).getAddress());
+                    System.out.println("Birthday: " + ((Contact) p.getData()).getBirthday());
+                    System.out.println("Notes: " + ((Contact) p.getData()).getNote());
                     
+                    return;
+                } else if (str.compareToIgnoreCase(((Contact) p.getData()).getEmailAddress()) < 0) {
+                    p = p.left;
+                } else {
+                    p = p.right;
                 }
-                
-            case 3:
-                while(p!=null){
-                    if (str.compareToIgnoreCase((Contact)p.data.getEmailAddress())=0){
-                         System.out.println("\nContact found!");
-					
-					System.out.println("\nName;" + ((Contact) p.getData()).getContactName());
-							
-					System.out.println("Phone Number;" + ((Contact) p.getData()).getPhoneNumber());
-							
-					System.out.println("Email Address;" + ((Contact) p.getData()).getEmailAddress());
-				   
-					System.out.println("Address;" + ((Contact) p.getData()).getAddress());
-											
-					System.out.println("Birthday;" + ((Contact) p.getData()).getBirthday());
-													
-					System.out.println("Notes:" + ((Contact) p.getData()).getNote());
-					n++;
-					 return; 
-                                         
-                    }
-                    else
-                        if(str.compareToIgnoreCase((Contact)p.data.getEmailAddress())<0)
-                            p=p.left;
-                        
-                        else
-                            p=p.right;
-                }
-                
-            
-            case 4:
-                while(p!=null){
-                   if (str.compareToIgnoreCase((Contact)p.data.getAddress())=0){
-                      System.out.println("\nContact found!");
-					
-					System.out.println("\nName;" + ((Contact) p.getData()).getContactName());
-							
-					System.out.println("Phone Number;" + ((Contact) p.getData()).getPhoneNumber());
-							
-					System.out.println("Email Address;" + ((Contact) p.getData()).getEmailAddress());
-				   
-					System.out.println("Address;" + ((Contact) p.getData()).getAddress());
-											
-					System.out.println("Birthday;" + ((Contact)p.getData()).getBirthday());
-													
-					System.out.println("Notes:" + ((Contact) p.getData()).getNote());
-					n++;
-					 return; 
-                                         
-                   }
-                   else
-                        if(str.compareToIgnoreCase((Contact)p.data.getAddress())<0)
-                            p=p.left;
-                        
-                        else
-                            p=p.right;
-                   
-                }
-                
-            case 5:
-                while(p!=null){
-                    if(str.compareToIgnoreCase((Contact)p.data.getBirthday())=0){
-                        System.out.println("\nContact found!");
-					
-					System.out.println("\nName;" + ((Contact) p.getData()).getContactName());
-							
-					System.out.println("Phone Number;" + ((Contact) p.getData()).getPhoneNumber());
-							
-					System.out.println("Email Address;" + ((Contact) p.getData()).getEmailAddress());
-				   
-					System.out.println("Address;" + ((Contact) p.getData()).getAddress());
-											
-					System.out.println("Birthday;" + ((Contact) p.getData()).getBirthday());
-													
-					System.out.println("Notes:" + ((Contact) p.getData()).getNote());
-					n++;
-					 return; 
-                    }
-                     else
-                        if(str.compareToIgnoreCase((Contact)p.data.getBirthday())<0)
-                            p=p.left;
-                        
-                        else
-                            p=p.right;
+            }}
+        case 4 -> {
+            while (p != null) {
+                if (str.compareToIgnoreCase(((Contact) p.getData()).getAddress()) == 0) {
+                    System.out.println("\nContact found!");
+                    System.out.println("Name: " + ((Contact) p.getData()).getContactName());
+                    System.out.println("Phone Number: " + ((Contact) p.getData()).getPhoneNumber());
+                    System.out.println("Email Address: " + ((Contact) p.getData()).getEmailAddress());
+                    System.out.println("Address: " + ((Contact) p.getData()).getAddress());
+                    System.out.println("Birthday: " + ((Contact) p.getData()).getBirthday());
+                    System.out.println("Notes: " + ((Contact) p.getData()).getNote());
                     
+                    return;
+                } else if (str.compareToIgnoreCase(((Contact) p.getData()).getAddress()) < 0) {
+                    p = p.left;
+                } else {
+                    p = p.right;
                 }
-            
-        }
-        
-        if(n==0)
-            System.out.print("contact not found");
+            }}
+        case 5 -> {
+            while (p != null) {
+                if (str.compareToIgnoreCase(((Contact) p.getData()).getBirthday()) == 0) {
+                    System.out.println("\nContact found!");
+                    System.out.println("Name: " + ((Contact) p.getData()).getContactName());
+                    System.out.println("Phone Number: " + ((Contact) p.getData()).getPhoneNumber());
+                    System.out.println("Email Address: " + ((Contact) p.getData()).getEmailAddress());
+                    System.out.println("Address: " + ((Contact) p.getData()).getAddress());
+                    System.out.println("Birthday: " + ((Contact) p.getData()).getBirthday());
+                    System.out.println("Notes: " + ((Contact) p.getData()).getNote());
+                    
+                    return;
+                } else if (str.compareToIgnoreCase(((Contact) p.getData()).getBirthday()) < 0) {
+                    p = p.left;
+                } else {
+                    p = p.right;
+                }
+            }}
     }
+   
+
+    
+        System.out.print("Contact not found");
+    
+}
 	
 //method to search if number exist
 	public boolean findPhoneNumber(int phoneNumber) {
@@ -277,7 +221,7 @@ public boolean findPhoneNumber1(BSTNode<T> p, int phoneNumber) {
 	    }
 	}
 	 
-	  }
+	  
 
 
 	
@@ -375,10 +319,41 @@ public boolean findPhoneNumber1(BSTNode<T> p, int phoneNumber) {
 	    }
 
 	    return successor;
-	}
+}
 	 
+
+
+//print contact by first name
+public void printByFirstName(String name){
+BSTNode<T> q=root;
+int c=0;
+if(empty()){
+System.out.print("tree is empty!");
+return;}
+while(q!=null){
+int ind = ((Contact) q.getData()).getContactName().indexOf(' ');
+String fName = ((Contact)q.getData()).getContactName().substring(0,ind);
+if (fName.equalsIgnoreCase(name)){
+System.out.println("\nContact found!");
+					
+System.out.println("\nName;" + ((Contact) q.getData()).getContactName());
+System.out.println("Phone Number;" + ((Contact) q.getData()).getPhoneNumber());
+System.out.println("Email Address;" + ((Contact) q.getData()).getEmailAddress());
+System.out.println("Address;" + ((Contact) q.getData()).getAddress());
+System.out.println("Birthday;" + ((Contact) q.getData()).getBirthday());
+System.out.println("Notes:" + ((Contact) q.getData()).getNote());
+c++;
+}
+else
+if(fName.compareToIgnoreCase(name)<0)
+q=q.left;
+else
+q=q.right;
+
+}
+if(c==0){
+System.out.println("the contact is not found");}
 }
 
-	
 
-
+}
