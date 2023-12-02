@@ -94,9 +94,33 @@ do{
 	case 3 -> {
         }
 		
-		
+		//add event
 	case 4 -> {
-        }	
+		System.out.println("Enter Type:");
+		System.out.println("1- Event");
+		System.out.println("2- Appointment");
+		int Ch = input.nextInt();
+		System.out.println("Enter event title: ");
+		input.nextLine();
+		String title = input.nextLine();
+		System.out.println("Enter the contact name: ");
+		String contact_n = input.nextLine();
+		System.out.println("Enter event date and time: ");
+		String date_time = input.nextLine();
+		System.out.println("Enter event location: ");
+		String location = input.nextLine();
+		String Type;
+		if (Ch ==1)
+			 Type = "Event";
+		else
+			Type = "Appointment";
+		Event NewEvent = new Event(title,date_time,location,Type,contact_n);
+		ContactBST.addEvent(NewEvent, Ch);
+		System.out.println("Thank you");
+		
+		
+		
+	}
 		
 	case 5 -> {
         }
