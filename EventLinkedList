@@ -129,11 +129,22 @@ public class EventLinkedList<T>{
 			}
 			
 			return false;
-			
-			
-			
+				
 			
 		}
+		public void display() {
+	        Node current = head;
+	        while (current != null) {
+	        	System.out.println("Event title: "+ ((Event) current.getData()).getEventTitle());
+				System.out.println("Contact name: "+((Event) current.getData()).getContact());
+				System.out.println("Event date and time (MM/DD/YYYY HH:MM): "+((Event) current.getData()).getDateAndTime());
+				System.out.println("Event location: "+((Event) current.getData()).getLocation());
+				System.out.println();
+	            
+	            current = current.next;
+	        }
+	        System.out.println();
+	    }
 
 
 	  
