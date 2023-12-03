@@ -1,7 +1,7 @@
 class Contact implements Comparable<String>{
     
 	private String contactName;
-	private String phoneNumber;
+	private int phoneNumber;
 	private String emailAddress;
 	private String address;
 	private String birthday;
@@ -12,7 +12,7 @@ class Contact implements Comparable<String>{
 	public Contact(){
 		
 		contactName = null;
-		phoneNumber = null;
+		phoneNumber = (Integer) null;
 		emailAddress = null;
 		address = null;
 		birthday = null;
@@ -33,7 +33,7 @@ class Contact implements Comparable<String>{
 		
 	}
 
-	public Contact(String contactName, String phoneNumber, String emailAddress, String address, String birthday, String notes,EventLinkedList  Event){
+	public Contact(String contactName, int phoneNumber, String emailAddress, String address, String birthday, String notes,EventLinkedList  Event){
 		
 		this.contactName = contactName;
 		this.phoneNumber = phoneNumber;
@@ -55,7 +55,7 @@ class Contact implements Comparable<String>{
 			
 	}
 
-	public void setPhoneNumber(String p){
+	public void setPhoneNumber(int p){
 			
 		phoneNumber = p;
 			
@@ -96,7 +96,7 @@ class Contact implements Comparable<String>{
 		
 	}
 
-	public String getPhoneNumber(){
+	public int getPhoneNumber(){
 		
 		return phoneNumber;
 		
