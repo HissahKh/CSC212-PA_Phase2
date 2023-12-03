@@ -15,15 +15,14 @@ public class ContactBST<T> {
 		}
 
 		public boolean findKey(String tkey) {
-		    BSTNode<T> p = root, q = null;
-
-		    if (empty())
+		    if (empty()) {
 		        return false;
+		    }
+
+		    BSTNode<T> p = root;
+		    int compareResult = tkey.replaceAll("\\s+", "").compareTo(p.key.replaceAll("\\s+", ""));
 
 		    while (p != null) {
-		        q = p;
-
-		        int compareResult = tkey.compareTo(p.key.replaceAll("\\s+", ""));
 		        if (compareResult == 0) {
 		            current = p;
 		            return true;
@@ -32,45 +31,47 @@ public class ContactBST<T> {
 		        } else {
 		            p = p.right;
 		        }
+
+		        // Update compareResult inside the loop
+		        if (p != null) {
+		            compareResult = tkey.replaceAll("\\s+", "").compareTo(p.key.replaceAll("\\s+", ""));
+		        }
 		    }
 
-		    current = q;
 		    return false;
 		}
 
 		
 	//insert
-		public boolean insert(String k ,T val) {
-			BSTNode<T> p , q =  current;
-			p =  new BSTNode<T>(k, val);
-			if (empty()) {
-	            root = current = p;
-	            return true;
-	        }
-	  
+		public boolean insert(String k, T val) {
+		    BSTNode<T> p, q = current;
+		    p = new BSTNode<T>(k, val);
 
-	        if (findKey(k)) {
-	            current =  q;  // findName() modified current
-	            System.out.println("The Contact name is already in the PhoneBook");
-	            return false; // Contact with the same name already exists
-	        }
-	        
-	        if(findPhoneNumber(((Contact)p.getData()).getPhoneNumber())) {
-	        	System.out.println("The Contact number is already in the PhoneBook");
-	        	return false;}
-	        
-	      
-	        else {
-	            // current is pointing to parent of the new key
-	            int compareResult = k.replaceAll("\\s+","").compareTo(current.key.replaceAll("\\s+",""));
-	            if (compareResult < 0)
-	                current.left =  p;
-	            else
-	                current.right =  p;
-	            current = p;
-	            return true;
-	        }
-			}
+		    if (empty()) {
+		        root = current = p;
+		        return true;
+		    }
+
+		    if (findKey(k)) {
+		        current = q;
+		        System.out.println("The Contact name is already in the PhoneBook");
+		        return false;
+		    }
+
+		    if (findPhoneNumber(((Contact) p.getData()).getPhoneNumber())) {
+		        System.out.println("The Contact number is already in the PhoneBook");
+		        return false;
+		    } else {
+		        int compareResult = k.replaceAll("\\s+", "").compareTo(current.key.replaceAll("\\s+", ""));
+		        if (compareResult < 0)
+		            current.left = p;
+		        else
+		            current.right = p;
+		        current = p;
+		        return true;
+		    }
+		}
+
 
 
 	    
@@ -362,14 +363,14 @@ public class ContactBST<T> {
 						List.findfirst();
 						while(!List.last()) {
 							if(((Event) List.retrieve()).getDateAndTime().equalsIgnoreCase(E.getDateAndTime())){
-								System.out.println("The contact have an Event in the same time and date for the new Event");
+								System.out.println("The contact have an Appointment in the same time and date for the new Appointment");
 								current = q; 
 								return;
 							}
 							List.findnext();
 						}
 						if(((Event) List.retrieve()).getDateAndTime().equalsIgnoreCase(E.getDateAndTime())){//For last element
-							System.out.println("The contact have an Event in the same time and date for the new Event");
+							System.out.println("The contact have an Appointment in the same time and date for the new Appointment");
 							current = q; 
 							return;
 						}
@@ -562,3 +563,9 @@ public class ContactBST<T> {
 		newList.display();}
 		//order
 	}
+	
+	
+
+	
+	 
+	  }
