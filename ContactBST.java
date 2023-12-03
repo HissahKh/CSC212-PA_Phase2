@@ -332,6 +332,21 @@ public class ContactBST<T> {
 			switch(Ch) {
 			case 1:
 				if(findKey(E.getContact())) {
+					EventLinkedList List = ((Contact)current.getData()).getEvent();
+					List.findfirst();
+					while(!List.last()) {
+						if(((Event) List.retrieve()).getDateAndTime().equalsIgnoreCase(E.getDateAndTime())){
+							System.out.println("The contact have an Event in the same time for the new Event");
+							current = q; 
+							return;
+						}
+						List.findnext();
+					}
+					if(((Event) List.retrieve()).getDateAndTime().equalsIgnoreCase(E.getDateAndTime())){
+						System.out.println("The contact have an Event in the same time for the new Event");
+						current = q; 
+						return;
+					}
 				((Contact)current.getData()).getEvent().add(E);
 				System.out.println("Event added successfully");
 				}
@@ -342,6 +357,21 @@ public class ContactBST<T> {
 				boolean Exist = EventExist(E.getEventTitle());
 				if(!Exist) {
 					if(findKey(E.getContact())) {
+						EventLinkedList List = ((Contact)current.getData()).getEvent();
+						List.findfirst();
+						while(!List.last()) {
+							if(((Event) List.retrieve()).getDateAndTime().equalsIgnoreCase(E.getDateAndTime())){
+								System.out.println("The contact have an Event in the same time and date for the new Event");
+								current = q; 
+								return;
+							}
+							List.findnext();
+						}
+						if(((Event) List.retrieve()).getDateAndTime().equalsIgnoreCase(E.getDateAndTime())){//For last element
+							System.out.println("The contact have an Event in the same time and date for the new Event");
+							current = q; 
+							return;
+						}
 					((Contact)current.getData()).getEvent().add(E);
 					System.out.println("Appoitment added successfully");
 					}
