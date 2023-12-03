@@ -509,7 +509,7 @@ public class ContactBST<T> {
 	   int c=0;
 	public void printByFirstName(BSTNode<T> node,String name) {
 	if(empty()){
-	System.out.print("tree is empty!");
+	System.out.print("PhoneBook is empty!");
 	return;}
 	if (node != null ) {
 	int ind = ((Contact) node.getData()).getContactName().indexOf(' ');
@@ -533,6 +533,37 @@ public class ContactBST<T> {
 	if(c==0){
 	System.out.println("the contact is not found");}
 	}
+	
+	public void printEventsInOrder() {
+        printEventsInOrder(root);
+    }
+	
+	public void printEventsInOrder(BSTNode<T> node) {
+		
+		if(empty()){
+			System.out.print("PhoneBook is empty!");
+			return;}
+		if (node != null ) {
+			EventLinkedList <Event> newList = new EventLinkedList<Event>();
+			EventLinkedList <Event> Events = ((Contact)node.getData()).getEvent();
+			
+			if(!Events.isEmpty()) {
+				Events.findfirst();
+				while(!Events.last()) {
+					newList.add(Events.retrieve());
+					Events.findnext();
+				}
+				newList.add(Events.retrieve()); //for last element
+			}
+			
+		
+		printEventsInOrder(node.left);
+		printEventsInOrder(node.right);
+		newList.display();}
+		//order
+	}
+	
+	
 
 	
 	 
