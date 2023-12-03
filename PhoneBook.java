@@ -146,12 +146,12 @@ do{
 		System.out.println("1- Event");
 		System.out.println("2- Appointment");
 		int Ch = input.nextInt();
-		System.out.println("Enter event title: ");
+		System.out.println("Enter event/appointment title: ");
 		input.nextLine();
 		String title = input.nextLine();
 		System.out.println("Enter the contact name: ");
 		String contact_n = input.nextLine();
-		System.out.println("Enter event date and time: ");
+		System.out.println("Enter event date and time(MM/DD/YYYY HH:MM): ");
 		String date_time = input.nextLine();
 		System.out.println("Enter event location: ");
 		String location = input.nextLine();
@@ -198,7 +198,8 @@ do{
         }
 		
 		
-	case 7 -> {
+	case 7 -> {//Print all events alphabetically 
+		ContactBST.printEventsInOrder();
         }
 
 
@@ -207,15 +208,9 @@ case 8 -> ch = 8; //Exit
 	default -> System.out.println("Please enter the correct number!");
 	}
     
-    //Delete Contact
-    //add an event or appointment
-    //Print contacts by first name
-    //Print all events alphabetically
     	
 
 }while(ch != 8);
-String contactsInfo = ContactBST.print();
-System.out.println(contactsInfo);
 
 	}
 }
