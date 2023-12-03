@@ -91,8 +91,44 @@ do{
 		
 		
 		
-	case 3 -> {
-        }
+	case 3:
+				// Delete Contact
+
+				System.out.println("Enter delete criteria: ");
+				
+				System.out.println("1.Name");
+				System.out.println("2.PhoneNumber/n");
+				
+				System.out.print("Enter your choice: ");
+				
+				int choice2 = input.nextInt();
+				
+				System.out.println();
+			
+
+				if (choice2 == 1) {
+					
+					System.out.print("Enter the contact name/n");
+					
+					input.nextLine();
+					
+					String delName = input.nextLine();
+
+					ContactBST.delete(delName);
+
+				}
+
+				if (choice2 == 2) {
+					
+					System.out.print("Enter the phone number of the contact/n");
+					
+					String delPhone = input.next();
+
+					ContactBST.delete(delPhone);
+
+				}
+
+				break;
 		
 		//add event
 	case 4 -> {
