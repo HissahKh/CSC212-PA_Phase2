@@ -60,75 +60,85 @@ do{
             switch(cr){
                 case 1 -> {
                     System.out.print("enter contact's name: ");
+                    input.nextLine();
                     s=input.nextLine();
                     ContactBST.Search(cr,s);
+                    break;
                     }
                 case 2 -> {
                     System.out.print("enter contact's phone number: ");
                     int n=input.nextInt();
                     String phn=""+n;
                     ContactBST.Search(cr,phn);
+                    break;
                     }
                 case 3 -> {
                     System.out.print("enter contact's email address: ");
-                    s=input.nextLine();
+                    s=input.next();
                     ContactBST.Search(cr,s);
+                    break;
                     }
                 case 4 -> {
                     System.out.print("enter contact's address: ");
+                    input.nextLine();
                     s=input.nextLine();
                     ContactBST.Search(cr,s);
+                    break;
                     }
                 case 5 -> {
                     System.out.print("enter contact's birthday: ");
+                    input.nextLine();
                     s=input.nextLine();
                     ContactBST.Search(cr,s);
+                    break;
                     }
+             
             }
-            input.nextLine();
-            break;
-        }}
+            
+            
+        }break;}
 		
 		
 		
-	case 3:
-				// Delete Contact
+	case 3 -> {
+		// Delete Contact
 
-				System.out.println("Enter delete criteria: ");
-				
-				System.out.println("1.Name");
-				System.out.println("2.PhoneNumber/n");
-				
-				System.out.print("Enter your choice: ");
-				
-				int choice2 = input.nextInt();
-				
-				System.out.println();
+		System.out.println("Enter delete criteria: ");
+		
+		System.out.println("1.Name");
+		System.out.println("2.PhoneNumber/n");
+		
+		System.out.print("Enter your choice: ");
+		
+		int choice2 = input.nextInt();
+		
+		System.out.println();
+	
+
+		if (choice2 == 1) {
 			
+			System.out.print("Enter the contact name/n");
+			
+			input.nextLine();
+			
+			String delName = input.nextLine();
 
-				if (choice2 == 1) {
-					
-					System.out.print("Enter the contact name/n");
-					
-					input.nextLine();
-					
-					String delName = input.nextLine();
+			ContactBST.delete(delName);
 
-					ContactBST.delete(delName);
+		}
 
-				}
+		if (choice2 == 2) {
+			
+			System.out.print("Enter the phone number of the contact/n");
+			
+			String delPhone = input.next();
 
-				if (choice2 == 2) {
-					
-					System.out.print("Enter the phone number of the contact/n");
-					
-					String delPhone = input.next();
+			ContactBST.delete(delPhone);
 
-					ContactBST.delete(delPhone);
+		}
 
-				}
-
-				break;
+		break;
+        }
 		
 		//add event
 	case 4 -> {
@@ -157,8 +167,26 @@ do{
 		
 		
 	}
-		
+		//print event details
 	case 5 -> {
+		System.out.println("Enter search critiria: ");
+		System.out.println("1- Contact name ");
+		System.out.println("2- Event title ");
+		int c = input.nextInt();
+		switch(c) {
+		case 1:
+			System.out.println("Enter the contact name: ");
+			input.nextLine();
+			String name = input.nextLine();
+			ContactBST.PrintEventDetails(name, c);
+		case 2:
+			System.out.println("Enter the Event title: ");
+			input.nextLine();
+			String title = input.nextLine();
+			ContactBST.PrintEventDetails(title, c);
+		if(c != 1 && c != 2 )
+			System.out.println("Please Enter 1 or 2 ");
+		}
         }
 	//Print contacts by first name	
 	case 6 -> {
