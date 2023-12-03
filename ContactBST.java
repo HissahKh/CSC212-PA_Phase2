@@ -1,4 +1,3 @@
-
 public class ContactBST<T> {
 	private BSTNode<T> root, current;
     
@@ -15,26 +14,29 @@ public class ContactBST<T> {
 		return current.data;
 		}
 
-		public boolean findkey(String tkey) {
-			BSTNode<T> p = root,q = root; 
-			if(empty())
-			return false;
-			
-			int compareResult = tkey.compareTo(p.key);
-			while(p != null) {
-			q = p; 
-			
-			if(p.key.replaceAll("\\s+","").equalsIgnoreCase(tkey.replaceAll("\\s+",""))) {
-			current = p; 
-			return true;
-			} 
-			else
-			if(compareResult < 0)
-			p = p.left; 
-			else
-			p = p.right;
-			} current = q; return false;
-			}
+		public boolean findKey(String tkey) {
+		    BSTNode<T> p = root, q = null;
+
+		    if (empty())
+		        return false;
+
+		    while (p != null) {
+		        q = p;
+
+		        int compareResult = tkey.compareTo(p.key.replaceAll("\\s+", ""));
+		        if (compareResult == 0) {
+		            current = p;
+		            return true;
+		        } else if (compareResult < 0) {
+		            p = p.left;
+		        } else {
+		            p = p.right;
+		        }
+		    }
+
+		    current = q;
+		    return false;
+		}
 
 		
 	//insert
@@ -47,8 +49,8 @@ public class ContactBST<T> {
 	        }
 	  
 
-	        if (findkey(k)) {
-	            current = (BSTNode<T>) q;  // findName() modified current
+	        if (findKey(k)) {
+	            current =  q;  // findName() modified current
 	            System.out.println("The Contact name is already in the PhoneBook");
 	            return false; // Contact with the same name already exists
 	        }
@@ -62,10 +64,10 @@ public class ContactBST<T> {
 	            // current is pointing to parent of the new key
 	            int compareResult = k.replaceAll("\\s+","").compareTo(current.key.replaceAll("\\s+",""));
 	            if (compareResult < 0)
-	                current.left = (BSTNode<T>) p;
+	                current.left =  p;
 	            else
-	                current.right = (BSTNode<T>) p;
-	            current = (BSTNode<T>) p;
+	                current.right =  p;
+	            current = p;
 	            return true;
 	        }
 			}
@@ -92,13 +94,14 @@ public class ContactBST<T> {
 	                    System.out.println("Birthday: " + ((Contact) p.getData()).getBirthday());
 	                    System.out.println("Notes: " + ((Contact) p.getData()).getNote());
 	                    
-	                    return;
-	                } else if (str.compareToIgnoreCase(((Contact) p.getData()).getContactName()) < 0) {
+	           
+	                } if (str.compareToIgnoreCase(((Contact) p.getData()).getContactName()) < 0) {
 	                    p = p.left;
 	                } else {
 	                    p = p.right;
 	                }
-	            }}
+	            }break;}
+	        
 	        case 2 -> {
 	            while (p != null) {
 	                String s=""+((Contact) p.getData()).getPhoneNumber();
@@ -111,13 +114,13 @@ public class ContactBST<T> {
 	                    System.out.println("Birthday: " + ((Contact) p.getData()).getBirthday());
 	                    System.out.println("Notes: " + ((Contact) p.getData()).getNote());
 	                    
-	                    return;
-	                } else if (str.compareToIgnoreCase(s) < 0) {
+	                    
+	                } if (str.compareToIgnoreCase(s) < 0) {
 	                    p = p.left;
 	                } else {
 	                    p = p.right;
 	                }
-	            }}
+	            }break;}
 	        case 3 -> {
 	            while (p != null) {
 	                if (str.compareToIgnoreCase(((Contact) p.getData()).getEmailAddress()) == 0) {
@@ -129,13 +132,13 @@ public class ContactBST<T> {
 	                    System.out.println("Birthday: " + ((Contact) p.getData()).getBirthday());
 	                    System.out.println("Notes: " + ((Contact) p.getData()).getNote());
 	                    
-	                    return;
-	                } else if (str.compareToIgnoreCase(((Contact) p.getData()).getEmailAddress()) < 0) {
+	                    
+	                } if (str.compareToIgnoreCase(((Contact) p.getData()).getEmailAddress()) < 0) {
 	                    p = p.left;
 	                } else {
 	                    p = p.right;
 	                }
-	            }}
+	            }break;}
 	        case 4 -> {
 	            while (p != null) {
 	                if (str.compareToIgnoreCase(((Contact) p.getData()).getAddress()) == 0) {
@@ -147,13 +150,13 @@ public class ContactBST<T> {
 	                    System.out.println("Birthday: " + ((Contact) p.getData()).getBirthday());
 	                    System.out.println("Notes: " + ((Contact) p.getData()).getNote());
 	                    
-	                    return;
-	                } else if (str.compareToIgnoreCase(((Contact) p.getData()).getAddress()) < 0) {
+	                    
+	                } if (str.compareToIgnoreCase(((Contact) p.getData()).getAddress()) < 0) {
 	                    p = p.left;
 	                } else {
 	                    p = p.right;
 	                }
-	            }}
+	            }break;}
 	        case 5 -> {
 	            while (p != null) {
 	                if (str.compareToIgnoreCase(((Contact) p.getData()).getBirthday()) == 0) {
@@ -165,18 +168,18 @@ public class ContactBST<T> {
 	                    System.out.println("Birthday: " + ((Contact) p.getData()).getBirthday());
 	                    System.out.println("Notes: " + ((Contact) p.getData()).getNote());
 	                    
-	                    return;
-	                } else if (str.compareToIgnoreCase(((Contact) p.getData()).getBirthday()) < 0) {
+	                   
+	                } if (str.compareToIgnoreCase(((Contact) p.getData()).getBirthday()) < 0) {
 	                    p = p.left;
 	                } else {
 	                    p = p.right;
 	                }
-	            }}
+	            }
+	            break;
+	            }
+	        
 	    }
-	   
-
-	    
-	        System.out.print("Contact not found");
+	 
 	    
 	}
 		
@@ -199,8 +202,9 @@ public class ContactBST<T> {
 	    } else {
 	        return findPhoneNumber1(p.right, phoneNumber);
 	    }}
+	
 
-		//print
+		//print for check
 		public String print() {
 		    StringBuilder result = new StringBuilder();
 		    inOrderTraversal(root, result);
@@ -324,25 +328,104 @@ public class ContactBST<T> {
 		
 		
 		public void addEvent(Event E,int Ch) {
+			BSTNode<T> q = current;
 			switch(Ch) {
 			case 1:
-				findkey(E.getContact());
+				if(findKey(E.getContact())) {
 				((Contact)current.getData()).getEvent().add(E);
 				System.out.println("Event added successfully");
+				}
+				else
+					System.out.println("please check the contact name! ");
 				break;
 			case 2:
 				boolean Exist = EventExist(E.getEventTitle());
 				if(!Exist) {
-					findkey(E.getContact());
+					if(findKey(E.getContact())) {
 					((Contact)current.getData()).getEvent().add(E);
 					System.out.println("Appoitment added successfully");
+					}
+					else
+						System.out.println("please check the contact name! ");
 				}
 				else
 					System.out.println("The Appointment is already booked");
+				break;
 						
 			}
+			current = q; 
+			return;
 			
 		}
+		
+		public void PrintEventDetails(String T , int n) {//n for choice(Contact name or event title)
+			BSTNode<T> q = current;
+			switch(n) {
+			case 1:
+				findKey(T);
+				EventLinkedList List = ((Contact)current.getData()).getEvent();
+				List.findfirst();
+				while(!List.last()) {
+					System.out.println("Event title: "+ ((Event) List.retrieve()).getEventTitle());
+					System.out.println("Contact name: "+((Event) List.retrieve()).getContact());
+					System.out.println("Event date and time (MM/DD/YYYY HH:MM): "+((Event) List.retrieve()).getDateAndTime());
+					System.out.println("Event location: "+((Event) List.retrieve()).getLocation());
+					System.out.println();
+					List.findnext();
+					}
+				System.out.println("Event title: "+ ((Event) List.retrieve()).getEventTitle());
+				System.out.println("Contact name: "+((Event) List.retrieve()).getContact());
+				System.out.println("Event date and time (MM/DD/YYYY HH:MM): "+((Event) List.retrieve()).getDateAndTime());
+				System.out.println("Event location: "+((Event) List.retrieve()).getLocation());
+				System.out.println();
+			case 2:
+				if(empty()){
+					System.out.print("Phonebook is empty!");
+					return;}
+				else
+					PrintEventByTitle(root,T);
+				}
+			current = q;
+			return;
+				
+			}
+		public void PrintEventByTitle(BSTNode<T> node, String eventTitle) {
+	    	EventLinkedList Data = ((Contact)node.getData()).getEvent();
+	    	EventLinkedList <Event> Events = Data;
+	    	Events.findfirst();
+	    	if(!Events.isEmpty()) {
+	    	while (!Events.last()) {
+	    		Event e = Events.retrieve();
+	    		if(e.getEventTitle().equalsIgnoreCase(eventTitle)) {
+	    			System.out.println("Event found!");
+	    			System.out.println("Event title: "+ ((Event) Events.retrieve()).getEventTitle());
+					System.out.println("Contact name: "+((Event) Events.retrieve()).getContact());
+					System.out.println("Event date and time (MM/DD/YYYY HH:MM): "+((Event) Events.retrieve()).getDateAndTime());
+					System.out.println("Event location: "+((Event) Events.retrieve()).getLocation());
+					System.out.println();
+					Events.findnext();
+	    		}
+	    				
+	    	}
+	    	//For last element
+	    	Event e = Events.retrieve();
+	    	if(e.getEventTitle().equalsIgnoreCase(eventTitle)) {
+    			System.out.println("Event found!");
+    			System.out.println("Event title: "+ ((Event) Events.retrieve()).getEventTitle());
+				System.out.println("Contact name: "+((Event) Events.retrieve()).getContact());
+				System.out.println("Event date and time (MM/DD/YYYY HH:MM): "+((Event) Events.retrieve()).getDateAndTime());
+				System.out.println("Event location: "+((Event) Events.retrieve()).getLocation());
+				System.out.println();
+				return;
+    		}}
+	    	
+	        if (node != null ) {
+	        	PrintEventByTitle(node.left,eventTitle);
+	        	PrintEventByTitle(node.right,eventTitle);
+	        }
+			
+	    }
+		
 		
 		//To check if appointment is already in or not 
 		public boolean EventExist(String EventTitle) {
@@ -387,13 +470,11 @@ public class ContactBST<T> {
 
 
 	//print contact by first name
-	public void printByFirstName(String Firstname) {
+	    public void printByFirstName(String Firstname) {
 	    	printByFirstName(root,Firstname);
-			
 	    }
-	public void printByFirstName(BSTNode<T> node,String name){
-	BSTNode<T> q=root;
-	int c=0;
+	   int c=0;
+	public void printByFirstName(BSTNode<T> node,String name) {
 	if(empty()){
 	System.out.print("tree is empty!");
 	return;}
@@ -403,12 +484,12 @@ public class ContactBST<T> {
 	if (fName.equalsIgnoreCase(name)){
 	System.out.println("\nContact found!");
 						
-	System.out.println("\nName;" + ((Contact) node.getData()).getContactName());
-	System.out.println("Phone Number;" + ((Contact) node.getData()).getPhoneNumber());
-	System.out.println("Email Address;" + ((Contact) node.getData()).getEmailAddress());
-	System.out.println("Address;" + ((Contact) node.getData()).getAddress());
-	System.out.println("Birthday;" + ((Contact) node.getData()).getBirthday());
-	System.out.println("Notes:" + ((Contact) node.getData()).getNote());
+	System.out.println("\nName: " + ((Contact) node.getData()).getContactName());
+	System.out.println("Phone Number: " + ((Contact) node.getData()).getPhoneNumber());
+	System.out.println("Email Address: " + ((Contact) node.getData()).getEmailAddress());
+	System.out.println("Address: " + ((Contact) node.getData()).getAddress());
+	System.out.println("Birthday;: " + ((Contact) node.getData()).getBirthday());
+	System.out.println("Notes: " + ((Contact) node.getData()).getNote());
 	c++;
 	}	 
 		 if(fName.compareToIgnoreCase(name)<0)
@@ -419,10 +500,6 @@ public class ContactBST<T> {
 	if(c==0){
 	System.out.println("the contact is not found");}
 	}
-
-	
-	 
-	  }
 
 	
 	 
