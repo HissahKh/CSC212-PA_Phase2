@@ -334,6 +334,7 @@ public class ContactBST<T> {
 				if(findKey(E.getContact())) {
 					EventLinkedList List = ((Contact)current.getData()).getEvent();
 					List.findfirst();
+					if(!List.isEmpty()) {
 					while(!List.last()) {
 						if(((Event) List.retrieve()).getDateAndTime().equalsIgnoreCase(E.getDateAndTime())){
 							System.out.println("The contact have an Event in the same time for the new Event");
@@ -346,7 +347,7 @@ public class ContactBST<T> {
 						System.out.println("The contact have an Event in the same time for the new Event");
 						current = q; 
 						return;
-					}
+					}}
 				((Contact)current.getData()).getEvent().add(E);
 				System.out.println("Event added successfully");
 				}
@@ -420,39 +421,41 @@ public class ContactBST<T> {
 				
 			}
 		public void PrintEventByTitle(BSTNode<T> node, String eventTitle) {
-	    	EventLinkedList Data = ((Contact)node.getData()).getEvent();
-	    	EventLinkedList <Event> Events = Data;
-	    	Events.findfirst();
-	    	if(!Events.isEmpty()) {
-	    	while (!Events.last()) {
-	    		Event e = Events.retrieve();
-	    		if(e.getEventTitle().equalsIgnoreCase(eventTitle)) {
-	    			System.out.println("Event found!");
-	    			System.out.println("Event title: "+ ((Event) Events.retrieve()).getEventTitle());
-					System.out.println("Contact name: "+((Event) Events.retrieve()).getContact());
-					System.out.println("Event date and time (MM/DD/YYYY HH:MM): "+((Event) Events.retrieve()).getDateAndTime());
-					System.out.println("Event location: "+((Event) Events.retrieve()).getLocation());
-					System.out.println();
-					Events.findnext();
-	    		}
-	    				
-	    	}
-	    	//For last element
-	    	Event e = Events.retrieve();
-	    	if(e.getEventTitle().equalsIgnoreCase(eventTitle)) {
-    			System.out.println("Event found!");
-    			System.out.println("Event title: "+ ((Event) Events.retrieve()).getEventTitle());
-				System.out.println("Contact name: "+((Event) Events.retrieve()).getContact());
-				System.out.println("Event date and time (MM/DD/YYYY HH:MM): "+((Event) Events.retrieve()).getDateAndTime());
-				System.out.println("Event location: "+((Event) Events.retrieve()).getLocation());
-				System.out.println();
-				return;
-    		}}
-	    	
-	        if (node != null ) {
-	        	PrintEventByTitle(node.left,eventTitle);
-	        	PrintEventByTitle(node.right,eventTitle);
-	        }
+			 if (node != null) {
+			        EventLinkedList Data = ((Contact) node.getData()).getEvent();
+			        EventLinkedList<Event> Events = Data;
+			        Events.findfirst();
+
+			        if (!Events.isEmpty()) {
+			            while (!Events.last()) {
+			                Event e = Events.retrieve();
+			                if (e.getEventTitle().equalsIgnoreCase(eventTitle)) {
+			                    System.out.println("Event found!");
+			                    System.out.println("Event title: " + e.getEventTitle());
+			                    System.out.println("Contact name: " + e.getContact());
+			                    System.out.println("Event date and time (MM/DD/YYYY HH:MM): " + e.getDateAndTime());
+			                    System.out.println("Event location: " + e.getLocation());
+			                    System.out.println();
+			                }
+			                Events.findnext();
+			            }
+
+			            // For last element
+			            Event e = Events.retrieve();
+			            if (e.getEventTitle().equalsIgnoreCase(eventTitle)) {
+			                System.out.println("Event found!");
+			                System.out.println("Event title: " + e.getEventTitle());
+			                System.out.println("Contact name: " + e.getContact());
+			                System.out.println("Event date and time (MM/DD/YYYY HH:MM): " + e.getDateAndTime());
+			                System.out.println("Event location: " + e.getLocation());
+			                System.out.println();
+			            }
+			        }
+
+			        // Continue to the next nodes
+			        PrintEventByTitle(node.left, eventTitle);
+			        PrintEventByTitle(node.right, eventTitle);
+			    }
 			
 	    }
 		
