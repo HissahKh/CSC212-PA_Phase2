@@ -1,7 +1,7 @@
 class Contact implements Comparable<String>{
     
 	private String contactName;
-	private int phoneNumber;
+	private String phoneNumber;
 	private String emailAddress;
 	private String address;
 	private String birthday;
