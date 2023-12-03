@@ -134,6 +134,116 @@ public void Search(int c, String str) {
 	            }
 	        
 	    }
+public static void printEventsAlphypticaly(ContactBST<Contact> contactBST) {
+
+        String events = retrieveAllEvents(contactBST);
+
+        
+        System.out.println("Events in alphabetical order:");
+        System.out.println(events);
+
+    }
+
+    private static String retrieveAllEvents(ContactBST<Contact> contactBST) {
+        StringBuilder result = new StringBuilder();
+        retrieveAllEventsInOrder(contactBST.getRoot(), result);
+        return result.toString();
+    }
+
+    private static void retrieveAllEventsInOrder(BSTNode<Contact> node, StringBuilder result) {
+        if (node != null) {
+
+            retrieveAllEventsInOrder(node.getLeft(), result);
+
+
+            Contact contact = node.findData();
+            EventLinkedList<Event> events = contact.getEvent();
+            if (events != null) {
+                EventNode<Event> eventNode = events.getFirst();
+                while (eventNode != null) {
+                    result.append(eventNode.findData().getEventTitle()).append("\n");
+                    eventNode = eventNode.getNext();
+                }
+            }
+
+
+            retrieveAllEventsInOrder(node.getRight(), result);
+        }
+    public BSTNode<T> findNext(BSTNode<T> node, T data) {
+        if (node == null) {
+            return null;
+        }
+
+
+        BSTNode<T> targetNode = search(node, data);
+        if (targetNode == null) {
+            return null;
+        }
+
+        if (targetNode.getRight() != null) {
+            return findMin(targetNode.getRight());
+        }
+
+        BSTNode<T> successor = null;
+        BSTNode<T> ancestor = root;
+        while (ancestor != null) {
+            if (compare(data, ancestor.getData()) < 0) {
+                successor = ancestor;
+                ancestor = ancestor.getLeft();
+            } else if (compare(data, ancestor.getData()) > 0) {
+                ancestor = ancestor.getRight();
+            } else {
+                break;
+            }
+        }
+
+        return successor;
+    }
+
+    public BSTNode<T> findData(BSTNode<T> node, T data) {
+        if (node == null) {
+            return null;
+        }
+
+        int comparison = compare(data, node.getData());
+        if (comparison == 0) {
+            return node;
+        } else if (comparison < 0) {
+            return findData(node.getLeft(), data);
+        } else {
+            return findData(node.getRight(), data);
+        }
+    }
+
+    // ...
+
+    private BSTNode<T> search(BSTNode<T> node, T data) {
+        if (node == null || compare(data, node.getData()) == 0) {
+            return node;
+        }
+
+        if (compare(data, node.getData()) < 0) {
+            return search(node.getLeft(), data);
+        } else {
+            return search(node.getRight(), data);
+        }
+    }
+
+    private BSTNode<T> findMin(BSTNode<T> node) {
+        if (node.getLeft() == null) {
+            return node;
+        }
+        return findMin(node.getLeft());
+    }
+
+    private int compare(T data1, T data2) {
+       Event event1 = (Event) data1;
+    Event event2 = (Event) data2;
+    String eventName1 = event1.getEventName().toLowerCase();
+    String eventName2 = event2.getEventName().toLowerCase();
+    return eventName1.compareTo(eventName2);
+
+    }
 	 
 	    
 	}
