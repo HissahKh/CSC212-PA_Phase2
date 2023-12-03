@@ -361,6 +361,7 @@ public class ContactBST<T> {
 					if(findKey(E.getContact())) {
 						EventLinkedList List = ((Contact)current.getData()).getEvent();
 						List.findfirst();
+						if(!List.isEmpty()) {
 						while(!List.last()) {
 							if(((Event) List.retrieve()).getDateAndTime().equalsIgnoreCase(E.getDateAndTime())){
 								System.out.println("The contact have an Appointment in the same time and date for the new Appointment");
@@ -373,7 +374,7 @@ public class ContactBST<T> {
 							System.out.println("The contact have an Appointment in the same time and date for the new Appointment");
 							current = q; 
 							return;
-						}
+						}}
 					((Contact)current.getData()).getEvent().add(E);
 					System.out.println("Appoitment added successfully");
 					}
